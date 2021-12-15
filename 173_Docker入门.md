@@ -119,7 +119,7 @@ Docker 是一个用于开发，交付和运行应用程序的开放平台。Dock
 6. 安装最新版的docker（docker-ce 是社区版，docker-ee 企业版）
 
    ```bash
-   sudo yum install docker-ce docker-ce-cli containerd.io
+   sudo yum install -y docker-ce docker-ce-cli containerd.io
    ```
 
 7. 启动Docker
@@ -176,12 +176,8 @@ Docker 是一个用于开发，交付和运行应用程序的开放平台。Dock
    #创建对应的目录（如果有就不需要创建）
    sudo mkdir -p /etc/docker
    
-   #创建daemon.json文件，并写入镜像加速器地址（[]中替换为上面自己获取的加速器地址）
-   sudo tee /etc/docker/daemon.json <<-'EOF'
-   {
-     "registry-mirrors": ["https://ppc7nwnq.mirror.aliyuncs.com"]
-   }
-   EOF
+   #在/etc/docker目录下创建daemon.json文件，并写入镜像加速器地址（[]中替换为上面自己获取的加速器地址）
+   {"registry-mirrors":["https://ppc7nwnq.mirror.aliyuncs.com/"]}
    
    #重启服务
    sudo systemctl daemon-reload
