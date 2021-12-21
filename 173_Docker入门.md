@@ -85,50 +85,19 @@ Docker 是一个用于开发，交付和运行应用程序的开放平台。Dock
    VERSION="7 (Core)"
    ```
 
-2. 卸载Docker旧版本（之前没有安装则可以跳过）
+2. 使用官方安装脚本自动安装Docker
 
    ```bash
-   yum remove docker \
-                     docker-client \
-                     docker-client-latest \
-                     docker-common \
-                     docker-latest \
-                     docker-latest-logrotate \
-                     docker-logrotate \
-                     docker-engine
+   curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
    ```
-
-3. 下载docker所需的工具包
-
-   ```bash
-   sudo yum install -y yum-utils
-   ```
-
-4. 设置下载docker的镜像仓库为阿里云
-
-   ```bash
-   yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-   ```
-
-5. 更新yum软件包索引
-
-   ```bash
-   yum makecache fast
-   ```
-
-6. 安装最新版的docker（docker-ce 是社区版，docker-ee 企业版）
-
-   ```bash
-   sudo yum install -y docker-ce docker-ce-cli containerd.io
-   ```
-
-7. 启动Docker
+   
+3. 启动Docker
 
    ```bash
    systemctl start docker
    ```
 
-8. 查看Docker版本号
+4. 查看Docker版本号
 
    ```bash
    docker version
@@ -136,47 +105,49 @@ Docker 是一个用于开发，交付和运行应用程序的开放平台。Dock
 
    出现版本信息则表明安装成功！
 
-9. 设置Docker开机自启
+5. 设置Docker开机自启
 
    ```bash
    systemctl enable docker
    ```
 
-10. 下载`hello-world`镜像进行测试
+6. 下载`hello-world`镜像进行测试
 
-    ```bash
-    docker run hello-world
-    ```
+   ```bash
+   docker run hello-world
+   ```
 
-11. 查看`hell0-world`镜像是否下载成功 
+7. 查看`hell0-world`镜像是否下载成功 
 
-    ```bash
-    docker images
-    ```
+   ```bash
+   docker images
+   ```
 
-12. 卸载Docker
+8. 卸载Docker
 
-    ```bash
-    # 1. 卸载依赖
-    yum remove docker-ce docker-ce-cli containerd.io
-    
-    # 2. 删除资源  . /var/lib/docker是docker的默认工作路径
-    rm -rf /var/lib/docker
-    ```
+   ```bash
+   # 1. 卸载依赖
+   yum remove docker-ce docker-ce-cli containerd.io
+   
+   # 2. 删除资源  . /var/lib/docker是docker的默认工作路径
+   rm -rf /var/lib/docker
+   ```
 
 # 5. Docker镜像加速
 
-1. 进入网址`https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors`获取阿里云镜像加速链接
+1. 进入网址`https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors`获取阿里云镜像加速链接`https://ppc7nwnq.mirror.aliyuncs.com`
 
    ![](https://gitee.com/jasonM4A1/pictureHost/raw/master/img/20210919121444.png)
 
-2. 依次执行下面四条命令
+2. 依次执行下面的命令
 
    ```bash
    #创建对应的目录（如果有就不需要创建）
    sudo mkdir -p /etc/docker
    
    #在/etc/docker目录下创建daemon.json文件，并写入镜像加速器地址（[]中替换为上面自己获取的加速器地址）
+   cd /etc/docker
+   vim daemon.json
    {"registry-mirrors":["https://ppc7nwnq.mirror.aliyuncs.com/"]}
    
    #重启服务

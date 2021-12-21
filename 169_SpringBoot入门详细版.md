@@ -1,31 +1,3 @@
-<!-- vim-markdown-toc Marked -->
-
-* [SpringBoot2核心技术-基础入门](#springboot2核心技术-基础入门)
-    * [Spring与SpringBoot](#spring与springboot)
-        * [Spring简介](#spring简介)
-            * [Spring能力](#spring能力)
-            * [Spring生态](#spring生态)
-            * [响应式编程](#响应式编程)
-        * [SpringBoot简介](#springboot简介)
-            * [SpringBoot优点](#springboot优点)
-            * [SpringBoot缺点](#springboot缺点)
-        * [时代背景](#时代背景)
-            * [微服务](#微服务)
-            * [分布式](#分布式)
-            * [云原生(CloudNative)](#云原生(cloudnative))
-        * [SpringBoot官网文档](#springboot官网文档)
-    * [第一个SpringBoot程序](#第一个springboot程序)
-        * [环境要求](#环境要求)
-        * [创建步骤](#创建步骤)
-    * [自动配置原理](#自动配置原理)
-        * [SpringBoot特点](#springboot特点)
-            * [依赖管理](#依赖管理)
-            * [自动配置](#自动配置)
-        * [容器功能](#容器功能)
-            * [组件添加](#组件添加)
-
-<!-- vim-markdown-toc -->
-
 # SpringBoot2核心技术-基础入门
 
 **学习要求**
@@ -152,6 +124,7 @@ SpringBoot + SpringCloud
         <url>http://maven.aliyun.com/nexus/content/groups/public</url>
       </mirror>
     </mirrors>
+    ```
 
   <profiles>
          <profile>
@@ -176,6 +149,7 @@ SpringBoot + SpringCloud
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.4.RELEASE</version>
     </parent>
+    ```
 
 
     <dependencies>
@@ -447,7 +421,8 @@ public class MyConfig {
    **配置类**
 
    ```java
-   ```
-
+   
+```
+   
    
 
